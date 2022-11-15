@@ -1,16 +1,26 @@
 import java.io.*;
+import java.util.Scanner;
 
 public class CreateFile {
     public static void main(String[] args) {
 
-        File myFile = new File("MyFile.txt");
-        System.out.println("My file is located at " + myFile.getAbsolutePath());
+        System.out.println("Please input a string to add to the new file: ");
+        Scanner userInput = new Scanner(System.in);
+        String fileInput = userInput.nextLine();
 
         try {
-            String content = "Dewan's test";
+            File myFile = new File(fileInput);
             PrintWriter outputFile = new PrintWriter(new FileWriter(myFile, true));
-            outputFile.println(content);
+            System.out.println("Enter a string to input into the created file: ");
+            String fileValueInput = userInput.nextLine();
+            outputFile.println(fileValueInput);
             outputFile.close();
+
+            Scanner inputFile = new Scanner(myFile);
+            while(inputFile.hasNextLine()) {
+                String firstString = inputFile.nextLine();
+                System.out.println(firstString);
+            }
         }
         catch(IOException e) {
             e.printStackTrace();
