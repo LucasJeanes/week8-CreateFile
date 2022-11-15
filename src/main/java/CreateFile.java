@@ -7,11 +7,12 @@ public class CreateFile {
         System.out.println("My file is located at " + myFile.getAbsolutePath());
 
         try {
-            String content = "third entry";
-            FileWriter outputFile = new FileWriter(myFile, true);
-            outputFile.write(content);
+            String content = "Dewan's test";
+            PrintWriter outputFile = new PrintWriter(new FileWriter(myFile, true));
+            outputFile.println(content);
             outputFile.close();
-        } catch(IOException e) {
+        }
+        catch(IOException e) {
             e.printStackTrace();
         }
     }
